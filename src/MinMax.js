@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 
-Counter.propTypes = {
+MinMax.propTypes = {
     min: PropTypes.number,
-    max: PropTypes.number.isRequired
+    max: PropTypes.number.isRequired,
+    current: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
+
 }
 
-function Counter({min = 1, max}) {
-    let [current, setCurrent] = useState(min);
-
+function MinMax({min = 1, max, current, onChange }) {
     function applyCurrent(num) {
         let validNum = Math.max(min, Math.min(max, num));
-        setCurrent(validNum);
+        onChange(validNum);
+
     }
 
     function parseCurrentStr(e){
@@ -33,4 +35,4 @@ function Counter({min = 1, max}) {
 
 }
 
-export default Counter;
+export default MinMax;
